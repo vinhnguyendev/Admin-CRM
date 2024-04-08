@@ -1,14 +1,24 @@
 "use client";
 
+import React from "react";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import Filter from "../Filter";
 import { Button } from "@/components/ui/button";
+
 
 import {
   ColumnDef,
+  ColumnFiltersState,
+  SortingState,
   flexRender,
   getCoreRowModel,
-  useReactTable,
+  getFilteredRowModel,
   getPaginationRowModel,
+  getSortedRowModel,
+  useReactTable,
 } from "@tanstack/react-table";
+
+
 
 import {
   Table,
@@ -18,30 +28,54 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { ScrollArea } from "@/components/ui/scroll-area";
+
+
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
 }
 
+
 export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
+  const [sorting, setSorting] = React.useState<SortingState>([]);
+  const [rowSelection, setRowSelection] = React.useState({});
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
+    [
+    ]
+  );
+  const [selectedFilter, setSelectedFilter] = React.useState("firstname");
+
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    onSortingChange: setSorting,
+    onRowSelectionChange: setRowSelection,
+    state: {
+      sorting,
+      columnFilters: columnFilters,
+      rowSelection,
+    },
+    onColumnFiltersChange: setColumnFilters,
   });
+
 
   return (
     <div>
-      <ScrollArea className="h-[70vh] w-full border-b"
-      type="always"
-      >
-        <div className=" border">
+      <ScrollArea className="h-[70vh] w-full border-b" type="always">
+      <Filter 
+      columnFilters={columnFilters} 
+      setColumnFilters={setColumnFilters}
+      table={table}
+      /> 
+        <div className="border">
           <Table>
             <TableHeader>
               {table.getHeaderGroups().map((headerGroup) => (
@@ -65,7 +99,7 @@ export function DataTable<TData, TValue>({
               {table.getRowModel().rows?.length ? (
                 table.getRowModel().rows.map((row) => (
                   <TableRow
-                  className="text-xs"
+                    className="text-xs"
                     key={row.id}
                     data-state={row.getIsSelected() && "selected"}
                   >
@@ -93,6 +127,10 @@ export function DataTable<TData, TValue>({
           </Table>
         </div>
       </ScrollArea>
+      <div className="flex-1 text-sm text-center text-muted-foreground py-5">
+        {table.getFilteredSelectedRowModel().rows.length} of{" "}
+        {table.getFilteredRowModel().rows.length} row(s) selected.
+      </div>
       <div className="flex items-center justify-end space-x-2 py-4 px-2">
         <Button
           variant="outline"

@@ -31,7 +31,6 @@ export default function SearchBar() {
           <SelectContent>
             <SelectGroup>
               <SelectLabel>Filters by:</SelectLabel>
-              <SelectItem value="name">Name</SelectItem>
               <SelectItem value="gender">Gender</SelectItem>
               <SelectItem value="state">State</SelectItem>
               <SelectItem value="country">Country</SelectItem>
