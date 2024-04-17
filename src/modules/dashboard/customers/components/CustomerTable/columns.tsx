@@ -13,6 +13,19 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { DialogViewType } from "@/models/Dialog";
 import { DotsHorizontalIcon } from "@radix-ui/react-icons";
@@ -73,6 +86,10 @@ export const columns = ({
     id: "age",
     accessorKey: "dob.age",
     header: () => "Age",
+    cell: ({row}) => {
+      const customerAge: string = (row.original.dob.age).toString();
+      return customerAge;
+    }
   },
   {
     id: "city",
@@ -99,31 +116,56 @@ export const columns = ({
 
       return (
         <Dialog open={open} onOpenChange={setOpen}>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="h-8 w-8 p-0">
-                <span className="sr-only">Open menu</span>
-                <DotsHorizontalIcon className="h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuLabel>Actions</DropdownMenuLabel>
+          <AlertDialog>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="h-8 w-8 p-0">
+                  <span className="sr-only">Open menu</span>
+                  <DotsHorizontalIcon className="h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuLabel>Actions</DropdownMenuLabel>
 
-              <DropdownMenuItem
-                onClick={() => handleDialogChange(DialogViewType.Edit)}
-              >
-                Edit
-              </DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() => handleDialogChange(DialogViewType.Edit)}
+                >
+                  Edit
+                </DropdownMenuItem>
+                <AlertDialogTrigger asChild>
+                  <DropdownMenuItem>Delete</DropdownMenuItem>
+                </AlertDialogTrigger>
 
-              <DropdownMenuItem>Delete</DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem
-                onClick={() => handleDialogChange(DialogViewType.View)}
-              >
-                View customer details
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem
+                  onClick={() => handleDialogChange(DialogViewType.View)}
+                >
+                  View customer details
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>
+                  Are you sure you want to delete this profile?
+                </AlertDialogTitle>
+                <AlertDialogDescription>
+                  This action cannot be undone. This will permanently delete
+                  your sending profile.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogAction
+                  onClick={() => {
+                    onDelete(customer);
+                  }}
+                >
+                  Delete
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
           <DialogContent>
             <DialogView customer={customer} dialog={dialog} onEdit={onEdit} />
           </DialogContent>

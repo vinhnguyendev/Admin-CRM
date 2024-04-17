@@ -5,7 +5,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function convertDate(dateStr: Date | null) {
+export function convertDate(dateStr: Date | null | string) {
   if (dateStr) {
     const dateObj = new Date(dateStr);
 

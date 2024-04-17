@@ -30,7 +30,7 @@ interface Name {
   }
   
   interface Dob {
-    date: Date;
+    date: Date | string;
     age: number;
   }
   

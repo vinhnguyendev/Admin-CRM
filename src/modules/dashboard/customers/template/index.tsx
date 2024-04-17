@@ -29,7 +29,6 @@ export default function CustomersDashboard() {
       const data = await query.json();
       const customers = data.results as CustomerData[];
       setCustomerData(customers);
-   
     } catch (e) {
       setError(true);
     }
@@ -38,7 +37,6 @@ export default function CustomersDashboard() {
 
   return (
     <div>
-     
       <div>
         {loading && !error && (
           <div className="flex h-[150px] w-full mb-2 items-center justify-center text-sm">
@@ -55,24 +53,27 @@ export default function CustomersDashboard() {
           <DataTable
             columns={columns({
               onEdit: (customer) => {
-                setLoading(true)
-
+                setLoading(true);
                 const updateCustomerInfo = () => {
-                    setCustomerData(
-                        customerData.map((c) => {
-                            if (customer.login.uuid === 'make equal to c.id') {
-                                return customer;
-                            }
-                            return c;
-                        })
-                    );
-                      setLoading(false)
+                  setCustomerData(
+                    customerData.map((c) => {
+                      if (customer.login.uuid === c.login.uuid) {
+                        return customer;
+                      }
+                      return c;
+                    })
+                  );
+                  setLoading(false);
                 };
 
-                setTimeout(updateCustomerInfo, 2000)
-            },
+                setTimeout(updateCustomerInfo, 2000);
+              },
               onDelete: (customer) => {
-                console.log("Delete");
+                setLoading(true);
+                setCustomerData(
+                  customerData.filter((c) => c.login.uuid !== customer.login.uuid)
+                );
+                setLoading(false);
               },
             })}
             data={customerData}

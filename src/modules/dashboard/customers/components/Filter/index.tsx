@@ -26,23 +26,11 @@ export default function Filter<TData, TValue>({
 }: columnFilterProps<TData, TValue>) {
   const [selectedFilter, setSelectedFilter] = React.useState("firstname");
 
-  const filterName =
-    columnFilters.find((filter) => filter.id === "firstname")?.value || "";
-
-  const onFilterChange = (id: string, value: string) =>
-    setColumnFilters((prev) =>
-      prev
-        .filter((filterItem) => filterItem.id !== id)
-        .concat({
-          id,
-          value,
-        })
-    );
-
   const handleFilterChange = (value: string) => {
+    console.log(value)
     setSelectedFilter(value);
   };
-  console.log(table.getColumn("age")?.getFilterValue());
+  
   return (
     <div className="flex gap-2 items-center px-4">
       <div className="flex items-center py-4">
