@@ -76,6 +76,7 @@ export const columns = ({
     id: "gender",
     accessorKey: "gender",
     header: () => "Gender",
+    filterFn: (row, columnId, filterValue) => row.original.gender.toLowerCase() === filterValue.toLowerCase(),
   },
   {
     id: "email",
@@ -83,13 +84,11 @@ export const columns = ({
     header: () => "Email",
   },
   {
-    id: "age",
-    accessorKey: "dob.age",
-    header: () => "Age",
-    cell: ({row}) => {
-      const customerAge: string = (row.original.dob.age).toString();
-      return customerAge;
-    }
+    id: 'age',
+    header: 'Age',
+    accessorFn: row => row.dob.age,
+    size: 100,
+    filterFn: (row, columnId, filterValue) => row.original.dob.age === Number(filterValue)
   },
   {
     id: "city",
@@ -140,7 +139,7 @@ export const columns = ({
                 <DropdownMenuItem
                   onClick={() => handleDialogChange(DialogViewType.View)}
                 >
-                  View customer details
+                  View contact details
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

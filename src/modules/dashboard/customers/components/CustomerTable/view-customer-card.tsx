@@ -6,16 +6,22 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
-import { ScrollArea } from "@radix-ui/react-scroll-area";
 import { CustomerData } from "@/models/Customers";
 import { convertDate } from "@/lib/utils";
 import Image from "next/image";
+
+import { EnvelopeClosedIcon } from "@radix-ui/react-icons";
+import { PhoneIcon } from "lucide-react";
+
+import CopyButton from "@/components/ui/copy-button";
 
 interface ViewCustomerCardProps {
   customer: CustomerData;
 }
 
 export default function ViewCustomerCard({ customer }: ViewCustomerCardProps) {
+ 
+
   const customerDetails = {
     firstname: customer.name.first,
     lastname: customer.name.last,
@@ -36,32 +42,47 @@ export default function ViewCustomerCard({ customer }: ViewCustomerCardProps) {
     city: customer.location.city as string,
   };
 
+  //Create separate ui component with debounce feature
+
+
   return (
     <Card className="border-none shadow-none">
-      <CardHeader>
+      <CardContent className="p-0">
         <div className="flex gap-5">
-        <Image className="rounded-full" src={customerDetails.picture} height={100} width={100} alt="customer image"/>
-        <div>
-        <p className="text-lg font-bold ">
-          {`${customerDetails.firstname}` + " " + `${customerDetails.lastname}`}
-        </p>
-          <p className="text-xs">{customerDetails.gender}({customerDetails.age} years old)</p>
+          <div className="">
+            <Image
+              className="rounded-full"
+              src={customerDetails.picture}
+              height={100}
+              width={100}
+              alt="customer image"
+            />
+          </div>
+          <div className="flex-col">
+            <div>
+              <p className="text-xs text-gray-500">Full name</p>
+              <p className="text-sm">
+                {`${customerDetails.firstname}` +
+                  " " +
+                  `${customerDetails.lastname}`}
+              </p>
+            </div>
+            <div className="my-2">
+              <p className="text-xs text-gray-500">Email</p>
+              <div className="flex">
+              <EnvelopeClosedIcon className="my-auto mx-1" />
+              <CopyButton textToCopy={contactDetails.email}/>
+              </div>
+              <p className="text-xs text-gray-500">Phone</p>
+              <div className="flex">
+                <PhoneIcon size={15} className="my-auto mx-1"/>
+              <CopyButton textToCopy={contactDetails.phone}/>
+              </div>
+              
+            </div>
+          </div>
         </div>
-        </div>
-      </CardHeader>
-      <CardContent>
-        <ScrollArea>
-          <ul className="grid grid-cols-2 gap-4">
-            {Object.entries(personalDetails).map(([key, value]) => (
-              <li className="flex flex-col" key={key}>
-                <p className="text-gray-500 text-xs">{key}:</p>
-                <p className="text-sm">{value}</p>
-              </li>
-            ))}
-          </ul>
-        </ScrollArea>
       </CardContent>
-      <CardFooter></CardFooter>
     </Card>
   );
 }

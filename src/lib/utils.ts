@@ -17,3 +17,44 @@ export function convertDate(dateStr: Date | null | string) {
     return formattedDate;
   }
 }
+
+export function formatPhoneNumber(phoneNumber: string): string {
+  const digitsOnly: string = phoneNumber.replace(/\D/g, "");
+  const groups: RegExpMatchArray | null = digitsOnly.match(
+    /^(\d{3})(\d{3})(\d{4})$/
+  );
+  if (groups) {
+    const formattedNumber: string = `(${groups[1]})-${groups[2]}-${groups[3]}`;
+    return formattedNumber;
+  } else {
+    return "Invalid phone number format";
+  }
+}
+
+export async function copyToClipboard(text: string): Promise<void> {
+  if ("clipboard" in navigator) {
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (error) {
+      console.error("Unable to copy text to clipboard", error);
+    }
+  } else {
+    try {
+      const range = document.createRange();
+      const element = document.createElement("div");
+      element.textContent = text;
+      document.body.appendChild(element);
+      range.selectNode(element);
+      const selection = window.getSelection();
+      if (selection) {
+        selection.removeAllRanges();
+        selection.addRange(range);
+        document.execCommand("copy");
+        document.body.removeChild(element);
+        selection.removeAllRanges();
+      }
+    } catch (error) {
+      console.error("Unable to copy text to clipboard", error);
+    }
+  }
+}
