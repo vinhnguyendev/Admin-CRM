@@ -4,7 +4,6 @@ import React, { useEffect } from "react";
 import { CustomerData } from "@/models/Customer-data";
 import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 import { DataTable } from "../components/CustomerTable/data-table";
 import { columns } from "../components/CustomerTable/columns";
 import AddCustomers from "../components/CustomerTable/add-customer";
@@ -107,7 +106,7 @@ export default function CustomersDashboard() {
         )}
         {!loading && error && (
           <div className="flex flex-col space-y-4 items-center py-8">
-            <Label>Something went wrong. Please try again</Label>
+            <p>Something went wrong. Please try again</p>
             <Button onClick={getData}>Try Again</Button>
           </div>
         )}

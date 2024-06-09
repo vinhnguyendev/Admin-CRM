@@ -1,5 +1,7 @@
 "use client";
 
+
+import React from "react";
 import {
   Dialog,
   DialogContent,
@@ -10,14 +12,13 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-import React from "react";
+
 import { Button } from "../../../../../components/ui/button";
 import { PlusIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
 import { excelToJson } from "@/lib/utils";
 import { Separator } from "../../../../../components/ui/separator";
 import { CustomerData } from "@/models/Customer-data";
-import { on } from "events";
 
 interface AddCustomerProps {
   onAdd: (newCustomers: CustomerData[]) => void;
@@ -66,18 +67,17 @@ export default function AddCustomers({ onAdd }: AddCustomerProps) {
         acLocation: row.acLocation,
       }));
 
-      onAdd(newCustomers)
-      setOpen(false)
+      onAdd(newCustomers);
+      setOpen(false);
     } catch (error) {
       setError("Failed to convert Excel to JSON");
     }
   };
 
-
   return (
     <div className="flex justify-end p-4 border-b">
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogTrigger>
+        <DialogTrigger asChild>
           <div>
             <Button className="flex gap-1">
               <span>
@@ -109,16 +109,14 @@ export default function AddCustomers({ onAdd }: AddCustomerProps) {
 
               <div className="p-4 border flex justify-start">
                 <div>
-                  <h1>Upload Excel File</h1>
+                  <p>Upload Excel File</p>
                   <input
+                    id="file"
                     type="file"
                     accept=".xlsx, .xls"
                     onChange={handleFileChange}
                   />
                   {error && <p style={{ color: "red" }}>{error}</p>}
-                  {/* {jsonResult && (
-                    <pre>{JSON.stringify(jsonResult, null, 2)}</pre>
-                  )} */}
                 </div>
               </div>
             </DialogDescription>

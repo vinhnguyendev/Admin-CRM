@@ -17,12 +17,12 @@ export default function SearchBar() {
 
   return (
     <div className="flex gap-2 align-middle items-center h-[70px] border-b p-4">
-      <div className="w-[200px]">
-        <Input className="shadow-md" placeholder="Search for customer..." />
+      {/* <div className="w-[200px]">
+        <Input id="search-customer"  name="search" className="shadow-md" placeholder="Search for customer..." />
       </div>
       <div>
         <Select>
-          <SelectTrigger className="w-[180px] shadow-md">
+          <SelectTrigger className="w-[180px] shadow-md" asChild>
             <SelectValue placeholder="" />
             <span className="text-sm"></span>
           </SelectTrigger>
@@ -36,7 +36,7 @@ export default function SearchBar() {
             </SelectGroup>
           </SelectContent>
         </Select>
-      </div>
+      </div> */}
     </div>
   );
 }

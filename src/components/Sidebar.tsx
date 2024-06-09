@@ -59,17 +59,17 @@ export default function Sidebar() {
     <div className="flex flex-col gap-4 w-[300px] min-w-[300px] border-r min-h-screen p-4">
       <UserItem />
       <div className="grow">
-        <Command>
-          <CommandList >
+        <div>
+          <ul>
             {menuList.map((menu: any, key: number) => (
-              <CommandGroup key={key} heading={menu.group}>
-                {menu.items.map((item: any, itemKey: number) => (
-                  <CommandItem key={itemKey} className="flex gap-2"><span>{item.icon}</span>{item.label}</CommandItem>
+              <li key={key}>
+                {menu.items.map((item: any) => (
+                  <div className="flex gap-2" key={item.label}><span>{item.icon}</span>{item.label}</div>
                 ))}
-              </CommandGroup>
+              </li>
             ))}
-          </CommandList>
-        </Command>
+          </ul>
+        </div>
       </div>
     </div>
   );

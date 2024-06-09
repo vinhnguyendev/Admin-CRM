@@ -1,11 +1,11 @@
+"use client";
+
 import React from "react";
 
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
@@ -27,14 +27,15 @@ export default function Filter<TData, TValue>({
   const [selectedFilter, setSelectedFilter] = React.useState("firstname");
 
   const handleFilterChange = (value: string) => {
-    console.log(value)
+    console.log(value);
     setSelectedFilter(value);
   };
-  
+
   return (
     <div className="flex gap-2 items-center px-4">
       <div className="flex items-center py-4">
         <Input
+          id="filter"
           placeholder={`Search by ${selectedFilter}...`}
           value={
             (table.getColumn(selectedFilter)?.getFilterValue() as string) ?? ""
@@ -53,9 +54,12 @@ export default function Filter<TData, TValue>({
             return headersGroup.headers
               .slice(1, headersGroup.headers.length - 1)
               .map((header) => {
+                const columnHeader = header.column.columnDef.header;
                 return (
                   <SelectItem value={header.id} key={header.id}>
-                    {header.column.columnDef.header}
+                    {typeof columnHeader === "function"
+                      ? columnHeader(header.getContext())
+                      : columnHeader}
                   </SelectItem>
                 );
               });
