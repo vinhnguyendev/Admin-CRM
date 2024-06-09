@@ -55,7 +55,7 @@ export default function Filter<TData, TValue>({
               .map((header) => {
                 return (
                   <SelectItem value={header.id} key={header.id}>
-                    {header.id}
+                    {header.column.columnDef.header}
                   </SelectItem>
                 );
               });

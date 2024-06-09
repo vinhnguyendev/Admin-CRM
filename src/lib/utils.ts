@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import * as XLSX from "xlsx";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -58,3 +59,28 @@ export async function copyToClipboard(text: string): Promise<void> {
     }
   }
 }
+
+export const excelToJson = (file: File): Promise<any> => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      const data = new Uint8Array(e.target?.result as ArrayBuffer);
+      const workbook = XLSX.read(data, { type: "array" });
+
+      const result: any = {};
+      workbook.SheetNames.forEach((sheetName) => {
+        const worksheet = workbook.Sheets[sheetName];
+        result[sheetName] = XLSX.utils.sheet_to_json(worksheet);
+      });
+
+      resolve(result);
+    };
+
+    reader.onerror = (error) => {
+      reject(error);
+    };
+
+    reader.readAsArrayBuffer(file);
+  });
+};

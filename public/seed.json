@@ -1,0 +1,212 @@
+[
+    {
+        "id": 1,
+        "firstname": "John",
+        "lastname": "Doe",
+        "email": "johndoe@example.com",
+        "phone": "123-456-7890",
+        "lastServiced": "2023-05-14",
+        "technician": "Mike Johnson",
+        "comments": "Routine check-up, no issues found",
+        "address": {
+            "homeAddress": "123 Bayshore Blvd",
+            "state": "FL",
+            "zipCode": "33606",
+            "county": "Hillsborough"
+        },
+        "seer": "16",
+        "condenser": "Carrier",
+        "airHandler": "Trane",
+        "heater": "Lennox",
+        "acLocation": "Backyard"
+    },
+    {
+        "id": 2,
+        "firstname": "Jane",
+        "lastname": "Smith",
+        "email": "janesmith@example.com",
+        "phone": "987-654-3210",
+        "lastServiced": "2023-06-20",
+        "technician": "Sara Davis",
+        "comments": "Replaced air filter, cleaned coils",
+        "address": {
+            "homeAddress": "456 Palm Ave",
+            "state": "FL",
+            "zipCode": "33602",
+            "county": "Hillsborough"
+        },
+        "seer": "18",
+        "condenser": "Goodman",
+        "airHandler": "Rheem",
+        "heater": "Bryant",
+        "acLocation": "Roof"
+    },
+    {
+        "id": 3,
+        "firstname": "Alice",
+        "lastname": "Brown",
+        "email": "alicebrown@example.com",
+        "phone": "555-123-4567",
+        "lastServiced": "2023-07-08",
+        "technician": "Tom Lee",
+        "comments": "Fixed refrigerant leak",
+        "address": {
+            "homeAddress": "789 River Rd",
+            "state": "FL",
+            "zipCode": "33603",
+            "county": "Hillsborough"
+        },
+        "seer": "14",
+        "condenser": "York",
+        "airHandler": "American Standard",
+        "heater": "Ruud",
+        "acLocation": "Garage"
+    },
+    {
+        "id": 4,
+        "firstname": "Bob",
+        "lastname": "Williams",
+        "email": "bobwilliams@example.com",
+        "phone": "444-321-7654",
+        "lastServiced": "2023-04-10",
+        "technician": "Emily Clark",
+        "comments": "Annual maintenance",
+        "address": {
+            "homeAddress": "321 Pine St",
+            "state": "FL",
+            "zipCode": "33607",
+            "county": "Hillsborough"
+        },
+        "seer": "20",
+        "condenser": "Lennox",
+        "airHandler": "Carrier",
+        "heater": "Trane",
+        "acLocation": "Side yard"
+    },
+    {
+        "id": 5,
+        "firstname": "Charlie",
+        "lastname": "Johnson",
+        "email": "charliejohnson@example.com",
+        "phone": "333-555-7777",
+        "lastServiced": "2023-03-22",
+        "technician": "David Martinez",
+        "comments": "Thermostat replacement",
+        "address": {
+            "homeAddress": "654 Oak Dr",
+            "state": "FL",
+            "zipCode": "33605",
+            "county": "Hillsborough"
+        },
+        "seer": "15",
+        "condenser": "Rheem",
+        "airHandler": "Bryant",
+        "heater": "Goodman",
+        "acLocation": "Attic"
+    },
+    {
+        "id": 6,
+        "firstname": "Diana",
+        "lastname": "Green",
+        "email": "dianagreen@example.com",
+        "phone": "222-666-8888",
+        "lastServiced": "2023-02-14",
+        "technician": "Kevin White",
+        "comments": "Duct cleaning",
+        "address": {
+            "homeAddress": "987 Cypress Ave",
+            "state": "FL",
+            "zipCode": "33610",
+            "county": "Hillsborough"
+        },
+        "seer": "17",
+        "condenser": "American Standard",
+        "airHandler": "York",
+        "heater": "Carrier",
+        "acLocation": "Crawl space"
+    },
+    {
+        "id": 7,
+        "firstname": "Eve",
+        "lastname": "Taylor",
+        "email": "evetaylor@example.com",
+        "phone": "111-777-9999",
+        "lastServiced": "2023-01-05",
+        "technician": "Lauren Green",
+        "comments": "Compressor replacement",
+        "address": {
+            "homeAddress": "123 Willow Dr",
+            "state": "FL",
+            "zipCode": "33611",
+            "county": "Hillsborough"
+        },
+        "seer": "13",
+        "condenser": "Bryant",
+        "airHandler": "Lennox",
+        "heater": "Rheem",
+        "acLocation": "Basement"
+    },
+    {
+        "id": 8,
+        "firstname": "Frank",
+        "lastname": "Harris",
+        "email": "frankharris@example.com",
+        "phone": "888-999-0000",
+        "lastServiced": "2022-12-30",
+        "technician": "Olivia Adams",
+        "comments": "Heat pump inspection",
+        "address": {
+            "homeAddress": "456 Mango St",
+            "state": "FL",
+            "zipCode": "33612",
+            "county": "Hillsborough"
+        },
+        "seer": "19",
+        "condenser": "Goodman",
+        "airHandler": "Ruud",
+        "heater": "York",
+        "acLocation": "Balcony"
+    },
+    {
+        "id": 9,
+        "firstname": "Grace",
+        "lastname": "Lewis",
+        "email": "gracelewis@example.com",
+        "phone": "777-888-1234",
+        "lastServiced": "2022-11-25",
+        "technician": "Jack King",
+        "comments": "Blower motor replacement",
+        "address": {
+            "homeAddress": "789 Cedar Ave",
+            "state": "FL",
+            "zipCode": "33619",
+            "county": "Hillsborough"
+        },
+        "seer": "16",
+        "condenser": "Carrier",
+        "airHandler": "Trane",
+        "heater": "Lennox",
+        "acLocation": "Courtyard"
+    },
+    {
+        "id": 10,
+        "firstname": "Hank",
+        "lastname": "Robinson",
+        "email": "hankrobinson@example.com",
+        "phone": "666-555-4444",
+        "lastServiced": "2022-10-15",
+        "technician": "Sophia Perez",
+        "comments": "Fan belt replacement",
+        "address": {
+            "homeAddress": "321 Oak St",
+            "state": "FL",
+            "zipCode": "33615",
+            "county": "Hillsborough"
+        },
+        "seer": "18",
+        "condenser": "Trane",
+        "airHandler": "Carrier",
+        "heater": "Goodman",
+        "acLocation": "Front yard"
+    }
+]

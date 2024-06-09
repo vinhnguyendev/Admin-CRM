@@ -14,8 +14,6 @@ import { Input } from "@/components/ui/input";
 import React from "react";
 
 export default function SearchBar() {
-  const [search, setSearch] = React.useState("");
-  const [filter, setFilter] = React.useState("")
 
   return (
     <div className="flex gap-2 align-middle items-center h-[70px] border-b p-4">

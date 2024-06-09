@@ -2,7 +2,7 @@
 
 import React from "react";
 import { ColumnDef } from "@tanstack/react-table";
-import { CustomerData } from "@/models/Customers";
+import { CustomerData } from "@/models/Customer-data";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import {
@@ -64,41 +64,57 @@ export const columns = ({
   },
   {
     id: "firstname",
-    accessorKey: "name.first",
-    header: () => "Firstname",
+    accessorKey: "firstname",
+    header: "First name",
+    // filterFn: (row, columnId, filterValue) => row.original.name.first.toLowerCase() === filterValue.toLowerCase(),
   },
   {
     id: "lastname",
-    accessorKey: "name.last",
-    header: () => "Lastname",
-  },
-  {
-    id: "gender",
-    accessorKey: "gender",
-    header: () => "Gender",
-    filterFn: (row, columnId, filterValue) => row.original.gender.toLowerCase() === filterValue.toLowerCase(),
+    accessorKey: "lastname",
+    header: "Last name",
+    // filterFn: (row, columnId, filterValue) => row.original.name.last.toLowerCase() === filterValue.toLowerCase(),
   },
   {
     id: "email",
     accessorKey: "email",
-    header: () => "Email",
+    header: "Email"
   },
   {
-    id: 'age',
-    header: 'Age',
-    accessorFn: row => row.dob.age,
-    size: 100,
-    filterFn: (row, columnId, filterValue) => row.original.dob.age === Number(filterValue)
+    id: 'last-serviced',
+    header: 'last serviced',
+    accessorKey: "lastServiced",
+    // size: 100,
+    // filterFn: (row, columnId, filterValue) => row.original.dob.age === Number(filterValue)
   },
   {
-    id: "city",
-    accessorKey: "location.city",
-    header: () => "City",
+    id: "homeAddress",
+    accessorKey: "address.homeAddress",
+    header: "Address"
+    // filterFn: (row, columnId, filterValue) => row.original.location.city.toLowerCase() === filterValue.toLowerCase(),
   },
   {
-    id: "country",
-    accessorKey: "location.country",
-    header: () => "Country",
+    id: "state",
+    accessorKey: "address.state",
+    header: "State"
+    // filterFn: (row, columnId, filterValue) => row.original.location.city.toLowerCase() === filterValue.toLowerCase(),
+  },
+  {
+    id: "zipCode",
+    accessorKey: "address.zipCode",
+    header: "Zip-Code",
+    // filterFn: (row, columnId, filterValue) => row.original.location.city.toLowerCase() === filterValue.toLowerCase(),
+  },
+  {
+    id: "county",
+    accessorKey: "address.county",
+    header: "County",
+    // filterFn: (row, columnId, filterValue) => row.original.location.country.toLowerCase() === filterValue.toLowerCase(),
+  },
+  {
+    id: "technician",
+    accessorKey: "technician",
+    header: "Technician",
+    // filterFn: (row, columnId, filterValue) => row.original.location.country.toLowerCase() === filterValue.toLowerCase(),
   },
   {
     id: "actions",
@@ -166,7 +182,8 @@ export const columns = ({
             </AlertDialogContent>
           </AlertDialog>
           <DialogContent>
-            <DialogView customer={customer} dialog={dialog} onEdit={onEdit} />
+            
+            {/* <DialogView customer={customer} dialog={dialog} onEdit={onEdit} /> */}
           </DialogContent>
         </Dialog>
       );

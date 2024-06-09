@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
-import ActionBar from "@/components/ActionBar";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +21,6 @@ export default function RootLayout({
       <body className={`${inter.className} flex items-start justify-between h-full`}>
         <Sidebar />
         <main className="w-full h-full">
-          <ActionBar />
           {children}
           </main>
       </body>
